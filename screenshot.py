@@ -52,3 +52,9 @@ def count_files(path,ext):
             count += 1
     return count
 
+def delete_files():
+        files = count_files(directory, extension)
+        if files >= 40:
+            os.unlink(str(find_oldest_file(directory,extension)))
+
+
