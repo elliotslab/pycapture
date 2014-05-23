@@ -42,3 +42,13 @@ def find_oldest_file(dirname,ext):
             if file_path.endswith(extension) and (file_time<oldest_time or oldest_time is None):
                 oldest_file, oldest_time = file_path, file_time
     return oldest_file
+
+def count_files(path,ext):
+    list_dir = []
+    list_dir = os.listdir(path)
+    count = 0
+    for file in list_dir:
+        if file.endswith(ext):
+            count += 1
+    return count
+
