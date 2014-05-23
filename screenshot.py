@@ -10,7 +10,8 @@ seconds = int(input())
 currentTime = time.time()
 currentDate = datetime.datetime.fromtimestamp(currentTime).strftime('%Y-%m-%d %H-%M-%S')
 
-def ScreenGrab():
+def screen_grab():
     im = ImageGrab.grab()
     fileName = str(currentDate) + ".png"
     im.save(fileName)
+
