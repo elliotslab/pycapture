@@ -30,7 +30,7 @@ currentDate = datetime.datetime.fromtimestamp(currentTime).strftime('%Y-%m-%d %H
 
 def screen_grab():
     im = ImageGrab.grab()
-    fileName = str(currentDate) + ".png"
+    fileName = str(currentDate) + extension 
     im.save(fileName)
 
 def find_oldest_file(dirname,ext):
@@ -57,4 +57,9 @@ def delete_files():
         if files >= 40:
             os.unlink(str(find_oldest_file(directory,extension)))
 
-
+while True:
+    currentTime = time.time()
+    currentDate = datetime.datetime.fromtimestamp(currentTime).strftime('%Y-%m-%d %H-%M-%S')
+    screen_grab()
+    time.sleep(seconds)
+    delete_files()
