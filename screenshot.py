@@ -6,6 +6,15 @@ import time
 # ask for delay between screenshots
 print 'How many seconds do you want between screenshots?'
 seconds = int(input())
+print 'In wich extension you would like to save the screenshots?'
+print '1) PNG\n2) JPEG\n' 
+fileExtension = input()
+
+if fileExtension == 1:
+    extension = '.png'
+else:
+    extension = '.jpg'
+
 
 # get date and time
 currentTime = time.time()
@@ -25,3 +34,5 @@ def find_oldest_file(dirname,extension):
             if file_path.endswith(extension) and (file_time<oldest_time or oldest_time is None):
                 oldest_file, oldest_time = file_path, file_time
     return oldest_file
+
+
