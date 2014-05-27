@@ -74,5 +74,5 @@ while True:
         time.sleep(seconds)
         delete_files()
     except:
-        print('saliendo')
+        print('Exiting now')
         break
