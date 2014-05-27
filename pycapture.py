@@ -19,7 +19,7 @@ else:
 if os.name == 'nt':
     directory = os.getenv('APPDATA') + '\screencaptures'
 else:
-    directory = os.gentenv('HOME') + '.screencaptures'
+    directory = os.environ['HOME'] + '/.screencaptures'
 
 
 try:
