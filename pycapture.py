@@ -6,16 +6,21 @@ import time
 # ask for delay between screenshots
 print 'How many seconds do you want between screenshots?'
 seconds = int(input())
-print 'In wich extension you would like to save the screenshots?'
-print '1) PNG\n2) JPEG\n' 
+print 'In wich format would you like to save the screenshots?'
+print '1) PNG\n2) JPEG\n'
 fileExtension = input()
+os.system('cls' if os.name == 'nt' else 'clear')
 
 if fileExtension == 1:
     extension = '.png'
 else:
     extension = '.jpg'
 
-directory = os.getenv('APPDATA') + '//screencaptures'
+if os.name == 'nt':
+    directory = os.getenv('APPDATA') + '\screencaptures'
+else:
+    directory = os.gentenv('HOME') + '.screencaptures'
+
 
 try:
     os.chdir(directory)
@@ -23,14 +28,17 @@ except:
     os.mkdir(directory)
     os.chdir(directory)
 
+print('saving screenshots every %i seconds in %s') % (seconds, directory)
 
 # get date and time
-currentTime = time.time()
-currentDate = datetime.datetime.fromtimestamp(currentTime).strftime('%Y-%m-%d %H-%M-%S')
+def tiempo():
+    tiempo.currentTime = time.time()
+    tiempo.currentDate = datetime.datetime.fromtimestamp(tiempo.currentTime).strftime('%Y-%m-%d %H-%M-%S')
+tiempo()
 
 def screen_grab():
     im = ImageGrab.grab()
-    fileName = str(currentDate) + extension 
+    fileName = str(tiempo.currentDate) + extension
     im.save(fileName)
 
 def find_oldest_file(dirname,ext):
@@ -58,8 +66,13 @@ def delete_files():
             os.unlink(str(find_oldest_file(directory,extension)))
 
 while True:
-    currentTime = time.time()
-    currentDate = datetime.datetime.fromtimestamp(currentTime).strftime('%Y-%m-%d %H-%M-%S')
-    screen_grab()
-    time.sleep(seconds)
-    delete_files()
+    try:
+        tiempo()
+        tiempo.currentTime
+        tiempo.currentDate
+        screen_grab()
+        time.sleep(seconds)
+        delete_files()
+    except:
+        print('saliendo')
+        break
