@@ -9,6 +9,8 @@ seconds = int(input())
 print 'In wich format would you like to save the screenshots?'
 print '1) PNG\n2) JPEG\n'
 fileExtension = input()
+print 'How many pictures would you like to save?'
+npicture = int(input())
 os.system('cls' if os.name == 'nt' else 'clear')
 
 if fileExtension == 1:
@@ -62,7 +64,7 @@ def count_files(path,ext):
 
 def delete_files():
         files = count_files(directory, extension)
-        if files >= 40:
+        if files >= npictures:
             os.unlink(str(find_oldest_file(directory,extension)))
 
 while True:
